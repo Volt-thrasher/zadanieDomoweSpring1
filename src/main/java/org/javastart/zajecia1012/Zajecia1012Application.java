@@ -1,6 +1,5 @@
 package org.javastart.zajecia1012;
 
-import org.javastart.zajecia1012.controller.spring.TestConnector;
 import org.javastart.zajecia1012.controller.spring.zadanie2.TestControllerZ2;
 import org.javastart.zajecia1012.controller.spring.zadanie2.UserRepository;
 import org.springframework.boot.SpringApplication;

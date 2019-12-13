@@ -2,8 +2,11 @@ package org.javastart.zajecia1012.controller.spring.zadanie2;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +14,7 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/users")
 public class TestControllerZ2 {
+
     private UserRepository repository;
 
     @Autowired
@@ -24,10 +28,10 @@ public class TestControllerZ2 {
         List<User> users = repository.getAll();
         return users.stream()
                 .map(User::getFirstName)
-                .collect(Collectors.joining(" ,"));
+                .collect(Collectors.joining(", "));
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search_name")
     @ResponseBody
     public String searchUserByName (@RequestParam("imie") String name){
         List<User> users = repository.getAll();
@@ -39,7 +43,7 @@ public class TestControllerZ2 {
         return "/err.html";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search_lst_name")
     @ResponseBody
     public String searchUserByLastName (@RequestParam("nazwisko") String lastName){
         List<User> users = repository.getAll();
@@ -51,7 +55,7 @@ public class TestControllerZ2 {
         return "/err.html";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search_age")
     @ResponseBody
     public String searchUserByAge (@RequestParam("wiek") int age){
         List<User> users = repository.getAll();
